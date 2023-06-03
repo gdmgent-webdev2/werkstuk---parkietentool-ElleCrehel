@@ -24,9 +24,10 @@ Route::middleware('auth')->group(function () {
 });
 
 // ORDER RING
-
 Route::post('/order', [OrderController::class, 'create'])->name('orders.create');
 
+// CHECK PREVIOUS ORDERS
+Route::get('/previousorders', [OrderController::class, 'previousOrders'])->name('orders.previousOrders');
    
 Route::get('/order/confirmation', function() {
     return view('orders.confirmation');

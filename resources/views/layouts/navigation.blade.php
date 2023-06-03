@@ -19,9 +19,12 @@
                     </x-nav-link>
                     <div class="order">
                     <x-dropdown-link :href="route('orders.order')">
-                        {{ __('Order') }}
+                        {{ __('Order A Ring') }}
                     </x-dropdown-link>
                 </div>
+                <x-dropdown-link :href="route('orders.previousOrders')">
+                    {{ __('Your Orders') }}
+                </x-dropdown-link>
                 </div>
               
 

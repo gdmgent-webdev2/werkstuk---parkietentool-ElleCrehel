@@ -20,6 +20,10 @@ class OrderController extends Controller
 
       return view('orders.order', compact('rings','user_id','user_name','user_email','user_lidnumber'));
     }
+    public function previousOrders(){
+      $user_id = Auth::user()->id;
+      $orders = Order::where('user_id', $user_id)->get();
+      return view('orders.previousorders', compact('orders')); }
 
     public function create(Request $request)
     {
@@ -27,6 +31,7 @@ class OrderController extends Controller
         'ring_name' => 'required',
         'ring_size' => 'required|regex:/^\d+(\.\d{1})?$/',
         'user_id' => 'required',
+        
       ]);
       
         $order = Order::create([
