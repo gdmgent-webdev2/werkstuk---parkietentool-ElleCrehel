@@ -1,0 +1,23 @@
+img {
+  max-width: 300px;
+
+}
+
+.ringlegende{
+  display: flex;
+  margin: 5px;
+flex-wrap: wrap;
+}
+
+label {
+  font-size: 20px;
+}
+
+button {
+  background-color: #78a15d;
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  margin: 5px;
+  cursor: pointer;
+}

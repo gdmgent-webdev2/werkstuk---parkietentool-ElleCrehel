@@ -28,7 +28,20 @@
         </ul>
     </nav>
     <main>
-      <h1>Maak kennis met onze nieuwe besteltool</h1>
+      <h1>Log in om onze nieuwe besteltool te gebruiken</h1>
+      <h2>Bestel je perfecte ring eenvoudig en snel met onze nieuwe besteltool. Kies je ringmaat, het gewenste type ring en meer, allemaal in een handomdraai. Ontdek het gemak en bestel vandaag nog jouw ideale ring. </h2>
+      <h1>Ringen in onze collectie:</h1>
+      <div class="ringlegende">
+        @foreach ($rings as $ring)
+            <ul class="rings">
+                <li>{{ $ring->name }} </li>
+                <p>{{ $ring->color }}</p>
+                <p>€{{ $ring->price }}</p>
+                <img src="{{ $ring->image_url }}" alt="">
+    
+            </ul>
+        @endforeach
+    </div>
     </main>
 
     <footer></footer>

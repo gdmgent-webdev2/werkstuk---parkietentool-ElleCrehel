@@ -26,7 +26,8 @@ class Controller extends BaseController
           'title'=> 'Login',
           'url'=> '/login',
           'active'=> false
-        ]     
+        ] ,
+          
       ];
     }
 

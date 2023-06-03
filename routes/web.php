@@ -2,28 +2,44 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\OrderController;
+use App\Models\Order;   
 
 
+// HOME
 Route::get('/', [HomeController::class, 'home'])->name('pages.home');
+Route::get('/order', [OrderController::class, 'view'])->name('orders.order');
 
-
+// NOT LOGGED IN
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+// PROFILE
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+// ORDER RING
+
+Route::post('/order', [OrderController::class, 'create'])->name('orders.create');
+
+   
+Route::get('/order/confirmation', function() {
+    return view('orders.confirmation');
+})->name('orders.confirmation');
+
+
+
+
+
+
 require __DIR__.'/auth.php';
 
-
+// ADMIN
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
