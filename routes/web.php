@@ -42,6 +42,8 @@ Route::get('/previousorders', [OrderController::class, 'previousOrders'])->name(
 
 //EIGENDOMSBEWIJZEN
 Route::get('/eigendomsbewijzen', [EigendomsbewijzenController::class, 'index'])->name('orders.eigendomsbewijzen');
+Route::post('/generate-pdf', [EigendomsbewijzenController::class, 'generatePdf'])->name('generate.pdf');
+
 
 Route::get('/order/confirmation', function () {
     return view('orders.confirmation');

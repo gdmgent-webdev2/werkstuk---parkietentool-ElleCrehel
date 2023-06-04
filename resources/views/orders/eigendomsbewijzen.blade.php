@@ -9,6 +9,7 @@
   <li>{{ $order->ring_name}} MAAT: {{ $order->ring_size}} RINGNUMMER: {{ $order->id}}</li>
 </ul>
 @endforeach
+
 <script>
   document.getElementById('exportPdf').addEventListener('click', function() {
     // Generate and download the PDF

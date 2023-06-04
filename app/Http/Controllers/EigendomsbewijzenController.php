@@ -19,12 +19,13 @@ class EigendomsbewijzenController extends Controller
     public function generatePdf(Request $request)
     {
         $html = $request->input('html');
-
+    
         $pdf = new TCPDF();
         $pdf->AddPage();
         $pdf->writeHTML($html);
         $pdf->Output(public_path('eigendomsbewijzen.pdf'), 'F');
-
+    
         return response()->json(['message' => 'PDF generated successfully']);
     }
+    
 }
