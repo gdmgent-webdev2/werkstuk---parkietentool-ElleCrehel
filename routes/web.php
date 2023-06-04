@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OrderController;
-use App\Models\Order;   
-
+use App\Http\Controllers\MoneyController;
+use App\Http\Controllers\WebhookController;
+use App\Models\Order;
+use Faker\Provider\ar_EG\Payment;
+use Money\Money;
 
 // HOME
 Route::get('/', [HomeController::class, 'home'])->name('pages.home');
@@ -25,6 +28,8 @@ Route::middleware('auth')->group(function () {
 
 // ORDER RING
 Route::post('/order', [OrderController::class, 'create'])->name('orders.create');
+//PAYMENT RING
+ROUTE::post('/order', [OrderController::class, 'earn'])->name('orders.earn');
 
 // CHECK PREVIOUS ORDERS
 Route::get('/previousorders', [OrderController::class, 'previousOrders'])->name('orders.previousOrders');
@@ -34,8 +39,15 @@ Route::get('/order/confirmation', function() {
 })->name('orders.confirmation');
 
 
+// PAYMENT
+ROUTE::get('/payment', [Moneycontroller::class, 'index'])->name('money.index');
+ROUTE::post('/payment', [Moneycontroller::class, 'earn'])->name('money.earn');
+ROUTE::get('/payment/succes',[Moneycontroller::class, 'succes'])->name('orders.confirmation');
 
 
+
+// WEBHOOK
+ROUTE::post('/webhooks/mollie', [WebhookController::class, 'mollie'])->name('webhooks.mollie');
 
 
 require __DIR__.'/auth.php';

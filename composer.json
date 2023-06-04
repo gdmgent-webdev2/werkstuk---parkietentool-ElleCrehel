@@ -10,6 +10,8 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "mollie/laravel-mollie": "^2.23",
+        "mollie/mollie-api-php": "^2.56",
         "tcg/voyager": "^1.6"
     },
     "require-dev": {
