@@ -1,8 +1,9 @@
 @vite(['resources/css/order.css'])
-
+<a href="/dashboard">BVP</a>
 <h2>Dag {{ $user_name }}, bestel uw ring hier.</h2>
 
-<form action="{{ route('orders.create') }}" method="POST">
+<form action="{{ route('orders.store') }}" method="POST">
+
     @csrf
     <label for="ring_name">Ring:</label>
     <select id="ring_name" name="ring_name">
@@ -20,9 +21,14 @@
         <span class="text-danger">{{ $message }}</span>
     @enderror
     <p>(Diameters tussen 3.5mm en 16mm)</p>
+   
+   
+    <label for="price">prijs</label>
+<input type="hidden" name="price" id="price">
+
 
     <input type="hidden" id="user_id" name="user_id" value="{{ $user_id }}">
-    <input type="hidden" id="status" name="status" value="besteld">
+    <input type="hidden" id="status" name="status" value="betaald">
     <input type="hidden" id="user_name" name="user_name" value="{{ $user_name }}">
     <input type="hidden" id="lidnumber" name="lidnumber" value="{{ $user_lidnumber }}">
     <button type="submit">

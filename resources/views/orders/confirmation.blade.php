@@ -9,7 +9,7 @@
     <script>
         setTimeout(function() {
             window.location.href = '/order';
-        }, 3000); // Redirect back to the order form after 3 seconds
+        }, 2000); // Redirect back to the order form after 3 seconds
     </script>
 </body>
 </html>

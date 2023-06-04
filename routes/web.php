@@ -27,9 +27,9 @@ Route::middleware('auth')->group(function () {
 });
 
 // ORDER RING
-Route::post('/order', [OrderController::class, 'create'])->name('orders.create');
-//PAYMENT RING
-ROUTE::post('/order', [OrderController::class, 'earn'])->name('orders.earn');
+Route::post('/order', [OrderController::class, 'store'])->name('orders.store');
+
+
 
 // CHECK PREVIOUS ORDERS
 Route::get('/previousorders', [OrderController::class, 'previousOrders'])->name('orders.previousOrders');
@@ -38,11 +38,6 @@ Route::get('/order/confirmation', function() {
     return view('orders.confirmation');
 })->name('orders.confirmation');
 
-
-// PAYMENT
-ROUTE::get('/payment', [Moneycontroller::class, 'index'])->name('money.index');
-ROUTE::post('/payment', [Moneycontroller::class, 'earn'])->name('money.earn');
-ROUTE::get('/payment/succes',[Moneycontroller::class, 'succes'])->name('orders.confirmation');
 
 
 

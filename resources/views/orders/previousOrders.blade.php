@@ -1,5 +1,6 @@
 
 @vite(['resources/css/previousOrder.css'])
+<a href="/dashboard">BVP</a>
 <h1>Historiek bestellingen:</h1>
 
 @foreach ($orders as $order)
@@ -9,6 +10,7 @@
     <p>Maat: {{ $order->ring_size}}</p>
     <p>Datum bestelling: {{ $order->created_at}}</p>
     <p>Status bestelling: {{$order->status}}</p>
+    <p>Prijs: {{$order->price}}</p>
    
 
 </ul>

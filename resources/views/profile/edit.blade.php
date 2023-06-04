@@ -10,5 +10,6 @@
       <h2>Gebruikersnaam: {{$user_name}}</h2>
       <h2>Lidnummer: {{$user_lidnumber}}</h2>
       <h2>Email: {{$user_email}}</h2>
+    
     </div>
 </x-app-layout>

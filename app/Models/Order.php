@@ -16,7 +16,9 @@ class Order extends Model
         'user_id',
         'status',
         'user_name',
-        'lidnumber'
+        'lidnumber',
+        'price'
+
         
     ];
 }
