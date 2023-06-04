@@ -22,7 +22,9 @@
     <p>(Diameters tussen 3.5mm en 16mm)</p>
 
     <input type="hidden" id="user_id" name="user_id" value="{{ $user_id }}">
-    
+    <input type="hidden" id="status" name="status" value="besteld">
+    <input type="hidden" id="user_name" name="user_name" value="{{ $user_name }}">
+    <input type="hidden" id="lidnumber" name="lidnumber" value="{{ $user_lidnumber }}">
     <button type="submit">
         Verstuur
     </button>

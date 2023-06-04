@@ -14,6 +14,9 @@ class Order extends Model
         'ring_name',
         'ring_size',
         'user_id',
+        'status',
+        'user_name',
+        'lidnumber'
         
     ];
 }

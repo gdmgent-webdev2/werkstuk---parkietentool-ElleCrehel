@@ -8,7 +8,7 @@
     <p>Ring: {{ $order->ring_name}}</p>
     <p>Maat: {{ $order->ring_size}}</p>
     <p>Datum bestelling: {{ $order->created_at}}</p>
-   
+    <p>Status bestelling: {{$order->status}}</p>
    
 
 </ul>

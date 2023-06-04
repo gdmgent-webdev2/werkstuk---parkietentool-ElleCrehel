@@ -31,13 +31,18 @@ class OrderController extends Controller
         'ring_name' => 'required',
         'ring_size' => 'required|regex:/^\d+(\.\d{1})?$/',
         'user_id' => 'required',
-        
+        'status' => 'required',
+        'user_name' => 'required',
+        'lidnumber' => 'required',
       ]);
       
         $order = Order::create([
             'user_id' => $request->input('user_id'),
             'ring_name' => $request->input('ring_name'),
             'ring_size' => $request->input('ring_size'),
+            'status' => $request->input('status'),
+            'user_name' => $request->input('user_name'),
+            'lidnumber' => $request->input('lidnumber'),
         ]);
 
         
