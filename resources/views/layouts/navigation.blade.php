@@ -25,6 +25,10 @@
                 <x-dropdown-link :href="route('orders.previousOrders')">
                     {{ __('Your Orders') }}
                 </x-dropdown-link>
+
+                <x-dropdown-link :href="route('orders.eigendomsbewijzen')">
+                    {{ __('Eigendomsbewijzen') }}
+                </x-dropdown-link>
                 </div>
               
 

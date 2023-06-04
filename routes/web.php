@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\MoneyController;
 use App\Http\Controllers\WebhookController;
+use App\Http\Controllers\EigendomsbewijzenController;
 use App\Models\Order;
 use Faker\Provider\ar_EG\Payment;
 use Money\Money;
@@ -38,6 +39,9 @@ Route::get('/orders/membership-alert', [OrderController::class, 'showMembershipA
 
 // CHECK PREVIOUS ORDERS
 Route::get('/previousorders', [OrderController::class, 'previousOrders'])->name('orders.previousOrders');
+
+//EIGENDOMSBEWIJZEN
+Route::get('/eigendomsbewijzen', [EigendomsbewijzenController::class, 'index'])->name('orders.eigendomsbewijzen');
 
 Route::get('/order/confirmation', function () {
     return view('orders.confirmation');
