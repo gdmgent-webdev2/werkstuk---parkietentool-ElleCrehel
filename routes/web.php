@@ -14,7 +14,7 @@ use Money\Money;
 Route::get('/', [HomeController::class, 'home'])->name('pages.home');
 Route::get('/order', [OrderController::class, 'view'])->name('orders.order');
 
-// NOT LOGGED IN
+// DASHBOARD
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -24,20 +24,24 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // PAY MEMBERSHIP FEE
+
+    Route::post('/profile/payment/checkout', [ProfileController::class, 'payMembershipFee'])->name('profile.payment.checkout');
+    Route::get('/profile/payment/confirmation', [ProfileController::class, 'paymentConfirmation'])->name('profile.payment.confirmation');
 });
 
 // ORDER RING
 Route::post('/order', [OrderController::class, 'store'])->name('orders.store');
 
-
+Route::get('/orders/membership-alert', [OrderController::class, 'showMembershipAlert'])->name('orders.membership.alert');
 
 // CHECK PREVIOUS ORDERS
 Route::get('/previousorders', [OrderController::class, 'previousOrders'])->name('orders.previousOrders');
-   
-Route::get('/order/confirmation', function() {
+
+Route::get('/order/confirmation', function () {
     return view('orders.confirmation');
 })->name('orders.confirmation');
-
 
 
 
@@ -45,7 +49,7 @@ Route::get('/order/confirmation', function() {
 ROUTE::post('/webhooks/mollie', [WebhookController::class, 'mollie'])->name('webhooks.mollie');
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 // ADMIN
 Route::group(['prefix' => 'admin'], function () {

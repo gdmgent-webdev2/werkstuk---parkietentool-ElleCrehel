@@ -1,26 +1,36 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Ring;
 use App\Models\Order;
+
 use Illuminate\Support\Facades\Validator;
 use Mollie\Laravel\Facades\Mollie;
+use Illuminate\View\View;
 
 class OrderController extends Controller
 {
     public function view()
     {
+        $user = Auth::user();
+    
+        // Check if the user has paid membership
+        if ($user->membership_paid !== 'yes') {
+            return redirect()->back()->with('error', "You don't have an active membership. Please pay the membership fee first.");
+        }
+    
         $rings = Ring::all();
-        $user_id = Auth::user()->id;
-        $user_name = Auth::user()->name;
-        $user_email = Auth::user()->email;
-        $user_lidnumber = Auth::user()->lidnumber;
-
+        $user_id = $user->id;
+        $user_name = $user->name;
+        $user_email = $user->email;
+        $user_lidnumber = $user->lidnumber;
+    
         return view('orders.order', compact('rings', 'user_id', 'user_name', 'user_email', 'user_lidnumber'));
     }
+    
 
     public function previousOrders()
     {
@@ -86,4 +96,19 @@ class OrderController extends Controller
     {
         return view('orders.confirmation');
     }
+ 
+    public function showMembershipAlert()
+    {
+        $user = Auth::user();
+    
+        // Check if the user has not paid for the membership
+        if ($user->membership_paid !== 'yes') {
+            $alertMessage = 'You need to pay for the membership before placing an order.';
+            return view('orders.membership_alert', compact('alertMessage'));
+        }
+    
+        // User has already paid for the membership, redirect to the order view
+        return redirect()->route('orders.view');
+    }
+    
 }

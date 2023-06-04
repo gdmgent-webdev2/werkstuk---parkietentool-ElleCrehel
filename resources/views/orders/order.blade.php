@@ -1,4 +1,11 @@
 @vite(['resources/css/order.css'])
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.js"></script>
+
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 <a href="/dashboard">BVP</a>
 <h2>Dag {{ $user_name }}, bestel uw ring hier.</h2>
 
